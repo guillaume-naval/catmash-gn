@@ -23,9 +23,9 @@
           <div class="top mt-10 text-center">
             Top 5 des chats les plus mignons
           </div>
-          <div v-if="cats" class="d-flex justify-center">
+          <div v-if="cats" class="d-flex justify-center flex-wrap">
             <div
-              class="d-flex flex-column justify-center align-center pa-2"
+              class="d-flex flex-column justify-center align-center mr-4"
               v-for="(cat, index) in cats.slice(0, 5)"
               :key="cat.id"
             >
@@ -35,7 +35,7 @@
                 height="150"
                 max-width="150"
                 alt="image cat"
-                class="rounded-circle"
+                class="cat-img rounded-circle"
               >
               </v-img>
               <p class="vote font-weight-bold" v-if="cat.vote > 1">
@@ -102,6 +102,7 @@ export default {
   background-color: white;
   border-radius: 50%;
 }
+
 .top {
   font-size: 2em;
 }

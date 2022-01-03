@@ -1,23 +1,21 @@
 <template>
   <v-container class="d-flex justify-center">
-    <div v-if="randomCat1" class="pa-5">
+    <div v-if="randomCat1" class="pa-2">
       <v-img
         aspect-ratio="1"
         :src="randomCat1.url"
-        width="330"
         alt="image cat"
-        class="rounded-circle pa-2"
+        class="cat-avatar rounded-circle pa-2"
         @click="addVote(randomCat1.id)"
       >
       </v-img>
     </div>
-    <div v-if="randomCat2" class="pa-5">
+    <div v-if="randomCat2" class="pa-2">
       <v-img
         aspect-ratio="1"
         :src="randomCat2.url"
-        width="330"
         alt="image cat"
-        class="rounded-circle pa-2"
+        class="cat-avatar rounded-circle pa-2"
         @click="addVote(randomCat2.id)"
       >
       </v-img>
@@ -103,11 +101,25 @@ export default {
         .catch((err) => console.log(err));
       window.setTimeout(function () {
         location.reload();
-      }, 1000);
+      }, 500);
     },
   },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
+<style scoped>
+.cat-avatar {
+  width: 300px;
+}
+@media screen and (max-width: 720px) {
+  .cat-avatar {
+    width: 200px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .cat-avatar {
+    width: 150px;
+  }
+}
+</style>
