@@ -1,7 +1,6 @@
 <template>
   <div class="cat_mash">
     <CatCircle />
-    <CatCircle />
   </div>
 </template>
 <script>

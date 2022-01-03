@@ -1,10 +1,21 @@
 <template>
   <v-app id="inspire">
     <v-container class="d-flex justify-center">
-      <div v-if="randomCat">
+      <div v-if="randomCat1">
         <v-img
           aspect-ratio="1"
-          :src="randomCat.url"
+          :src="randomCat1.url"
+          max-height="330"
+          width="330"
+          alt="image cat"
+          class="rounded-circle pa-2"
+        >
+        </v-img>
+      </div>
+      <div v-if="randomCat2">
+        <v-img
+          aspect-ratio="1"
+          :src="randomCat2.url"
           max-height="330"
           width="330"
           alt="image cat"
@@ -20,7 +31,8 @@ export default {
   name: "CatCircle",
   data() {
     return {
-      randomCat: null,
+      randomCat1: null,
+      randomCat2: null,
     };
   },
   created() {
@@ -59,8 +71,8 @@ export default {
           console.log(catArray);
           let listKeys = Object.keys(catArray);
           let randomIndex = Math.floor(Math.random() * listKeys.length);
-          let randomObject = catArray[listKeys[randomIndex]];
-          this.randomCat = randomObject;
+          this.randomCat1 = catArray[listKeys[randomIndex]];
+          this.randomCat2 = catArray[listKeys[randomIndex + 1]];
         }
       })
       .catch((err) => console.log(err));
