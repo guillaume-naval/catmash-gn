@@ -1,8 +1,10 @@
 <template>
-  <v-app>
+  <v-app class="main">
     <v-container height="50px" class="wrapper d-flex flex-column align-center">
-      <h1 class="text-center">CATMASH</h1>
-      <p class="subtitle-1">Voter pour le plus mignon !</p>
+      <h1 class="text-center">Cat Mash</h1>
+      <p class="subtitle-1 font-weight-thin">
+        Voter pour le chat le plus mignon <v-icon>mdi-cat</v-icon>
+      </p>
       <Cat-circle />
       <Rankings />
     </v-container>
@@ -26,5 +28,8 @@ export default {
   }),
 };
 </script>
-<style scoped>
+<style>
+.main {
+  font-family: "Pacifico", cursive;
+}
 </style>

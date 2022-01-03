@@ -5,19 +5,23 @@
       v-slot:activator="{ on, attrs }"
     >
       <v-btn
-        color="primary"
+        class="text-capitalize"
+        elevation="2"
+        outlined
+        rounded
+        color="secondary"
         @click="refreshRanks()"
-        width="200"
+        width="150"
         v-bind="attrs"
         v-on="on"
-        >Classement</v-btn
+        >Classement<v-icon right> mdi-chart-bar </v-icon></v-btn
       >
     </template>
     <template v-slot:default="dialog">
       <v-card>
         <v-card-text>
-          <div class="text-h4 pa-10 text-center">
-            Top 5 des chats les plus mignons ! 🐱
+          <div class="top mt-10 text-center">
+            Top 5 des chats les plus mignons
           </div>
           <div v-if="cats" class="d-flex justify-center">
             <div
@@ -34,7 +38,7 @@
                 class="rounded-circle"
               >
               </v-img>
-              <p class="font-weight-bold" v-if="cat.vote > 1">
+              <p class="vote font-weight-bold" v-if="cat.vote > 1">
                 {{ cat.vote }} votes
               </p>
               <p class="font-weight-bold" v-else>{{ cat.vote }} vote</p>
@@ -89,12 +93,19 @@ export default {
   top: 50px;
   right: 50px;
   z-index: 4;
-  width: 26px;
+  padding: 0em 0.4em 0.2em 0.4em;
+  font-size: 1.5em;
   border: 2px solid #666;
   color: #666;
   font-weight: bold;
   text-align: center;
   background-color: white;
   border-radius: 50%;
+}
+.top {
+  font-size: 2em;
+}
+.vote {
+  font-size: 1.4em;
 }
 </style>
