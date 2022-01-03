@@ -1,32 +1,28 @@
 <template>
-  <v-app id="inspire">
-    <v-container class="d-flex justify-center">
-      <div v-if="randomCat1" class="pa-5">
-        <v-img
-          aspect-ratio="1"
-          :src="randomCat1.url"
-          max-height="330"
-          width="330"
-          alt="image cat"
-          class="rounded-circle pa-2"
-          @click="addVote(randomCat1.id)"
-        >
-        </v-img>
-      </div>
-      <div v-if="randomCat2" class="pa-5">
-        <v-img
-          aspect-ratio="1"
-          :src="randomCat2.url"
-          max-height="330"
-          width="330"
-          alt="image cat"
-          class="rounded-circle pa-2"
-          @click="addVote(randomCat2.id)"
-        >
-        </v-img>
-      </div>
-    </v-container>
-  </v-app>
+  <v-container class="d-flex justify-center">
+    <div v-if="randomCat1" class="pa-5">
+      <v-img
+        aspect-ratio="1"
+        :src="randomCat1.url"
+        width="330"
+        alt="image cat"
+        class="rounded-circle pa-2"
+        @click="addVote(randomCat1.id)"
+      >
+      </v-img>
+    </div>
+    <div v-if="randomCat2" class="pa-5">
+      <v-img
+        aspect-ratio="1"
+        :src="randomCat2.url"
+        width="330"
+        alt="image cat"
+        class="rounded-circle pa-2"
+        @click="addVote(randomCat2.id)"
+      >
+      </v-img>
+    </div>
+  </v-container>
 </template>
 <script>
 export default {

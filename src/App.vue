@@ -1,9 +1,6 @@
 <template>
   <v-app>
-    <v-container
-      height="50px"
-      class="wrapper d-flex flex-column align-center justify-center"
-    >
+    <v-container height="50px" class="wrapper d-flex flex-column align-center">
       <h1 class="text-center">CATMASH</h1>
       <p class="subtitle-1">Voter pour le plus mignon !</p>
       <Cat-circle />

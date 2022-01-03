@@ -4,7 +4,12 @@
       class="d-flex justify-center align-center"
       v-slot:activator="{ on, attrs }"
     >
-      <v-btn color="primary" width="200" v-bind="attrs" v-on="on"
+      <v-btn
+        color="primary"
+        @click="refreshRanks()"
+        width="200"
+        v-bind="attrs"
+        v-on="on"
         >Classement</v-btn
       >
     </template>
@@ -13,6 +18,25 @@
         <v-card-text>
           <div class="text-h4 pa-10 text-center">
             Top 5 des chats les plus mignons ! 🐱
+          </div>
+          <div v-if="cats">
+            <div
+              class="d-flex justify-center align-center"
+              v-for="(cat, index) in cats.slice(0, 5)"
+              :key="cat.id"
+            >
+              <div>{{ index + 1 }}</div>
+              <v-img
+                :src="cat.url"
+                height="200"
+                max-width="200"
+                alt="image cat"
+                class="rounded-circle"
+              >
+              </v-img>
+              <div v-if="cat.vote > 1">{{ cat.vote }} votes</div>
+              <div v-else>{{ cat.vote }} vote</div>
+            </div>
           </div>
         </v-card-text>
         <v-card-actions class="justify-end">
@@ -26,7 +50,32 @@
 export default {
   name: "Rankings",
   data() {
-    return {};
+    return {
+      ranks: 0,
+      cats: null,
+    };
+  },
+  methods: {
+    refreshRanks() {
+      this.$http
+        .get(
+          "https://catmash-bbf95-default-rtdb.europe-west1.firebasedatabase.app/cats.json"
+        )
+        .then((res) => {
+          if (res) {
+            let catArray = [];
+            let data = res.data;
+            for (let key in data) {
+              data[key].id = key;
+              catArray.push(data[key]);
+            }
+            this.cats = catArray;
+            catArray.sort((a, b) => (a.vote > b.vote ? -1 : 1));
+            console.log(catArray);
+          }
+        })
+        .catch((err) => console.log(err));
+    },
   },
 };
 </script>
