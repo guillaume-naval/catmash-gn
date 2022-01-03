@@ -1,22 +1,30 @@
 <template>
   <v-container class="d-flex justify-center">
-    <div v-if="randomCat1" class="pa-2">
+    <v-alert class="alert" v-if="isHidden">Merci pour le vote! 😋</v-alert>
+    <div v-if="randomCat1" class="randcat1">
       <v-img
         aspect-ratio="1"
         :src="randomCat1.url"
         alt="image cat"
         class="cat-avatar rounded-circle pa-2"
-        @click="addVote(randomCat1.id)"
+        @click="
+          addVote(randomCat1.id);
+          isHidden = !isHidden;
+        "
       >
       </v-img>
     </div>
-    <div v-if="randomCat2" class="pa-2">
+    <p class="vs">vs</p>
+    <div v-if="randomCat2" class="randcat2">
       <v-img
         aspect-ratio="1"
         :src="randomCat2.url"
         alt="image cat"
         class="cat-avatar rounded-circle pa-2"
-        @click="addVote(randomCat2.id)"
+        @click="
+          addVote(randomCat2.id);
+          isHidden = !isHidden;
+        "
       >
       </v-img>
     </div>
@@ -27,6 +35,7 @@ export default {
   name: "Cat-circle",
   data() {
     return {
+      isHidden: false,
       randomCat1: null,
       randomCat2: null,
     };
@@ -109,17 +118,56 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.alert {
+  display: flex;
+  position: absolute;
+  width: 200px;
+  justify-content: center;
+  background-color: white;
+  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.548);
+  z-index: 4;
+}
 .cat-avatar {
   width: 300px;
 }
-@media screen and (max-width: 720px) {
+.cat-avatar:hover + .hide {
+  color: rgb(59, 59, 59) (128, 128, 128, 0.479);
+}
+.randcat1,
+.randcat2 {
+  padding: 3em;
+}
+.vs {
+  font-size: 4em;
+  padding: 0;
+  z-index: 4;
+  position: relative;
+  top: 140px;
+}
+@media screen and (max-width: 770px) {
   .cat-avatar {
     width: 200px;
+  }
+  .randcat1,
+  .randcat2 {
+    padding: 1.5em;
+  }
+  .vs {
+    font-size: 2.5em;
+    top: 90px;
   }
 }
 @media screen and (max-width: 480px) {
   .cat-avatar {
     width: 150px;
+  }
+  .randcat1,
+  .randcat2 {
+    padding: 0.5em;
+  }
+  .vs {
+    font-size: 1.5em;
+    top: 60px;
   }
 }
 </style>
