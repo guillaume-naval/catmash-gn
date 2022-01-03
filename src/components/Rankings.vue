@@ -41,7 +41,7 @@
               <p class="vote font-weight-bold" v-if="cat.vote > 1">
                 {{ cat.vote }} votes
               </p>
-              <p class="font-weight-bold" v-else>{{ cat.vote }} vote</p>
+              <p class="vote font-weight-bold" v-else>{{ cat.vote }} vote</p>
             </div>
           </div>
         </v-card-text>
