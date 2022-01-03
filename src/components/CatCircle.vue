@@ -20,11 +20,50 @@ export default {
   name: "CatCircle",
   data() {
     return {
-      randomCat: {
-        url: "http://24.media.tumblr.com/tumblr_m82woaL5AD1rro1o5o1_1280.jpg",
-        id: "MTgwODA3MA",
-      },
+      randomCat: null,
     };
+  },
+  created() {
+    // Populate our firebase real time database with data from https://latelier.co/data/cats.json
+
+    /* this.$http
+      .get("https://latelier.co/data/cats.json")
+      .then((res) => {
+        if (res) {
+          let data = res.data.images;
+          data.forEach((p) => {
+            var newValue = { vote: 0 };
+            p = { ...p, ...newValue };
+            this.$http.post(
+              "https://catmash-bbf95-default-rtdb.europe-west1.firebasedatabase.app/cats.json",
+              p
+            );
+          });
+        }
+      })
+      .catch((err) => console.log(err));
+ */
+    this.$http
+      .get(
+        "https://catmash-bbf95-default-rtdb.europe-west1.firebasedatabase.app/cats.json"
+      )
+      .then((res) => {
+        if (res) {
+          let catArray = [];
+          let data = res.data;
+          console.log(res.data);
+          for (let key in data) {
+            data[key].id = key;
+            catArray.push(data[key]);
+          }
+          console.log(catArray);
+          let listKeys = Object.keys(catArray);
+          let randomIndex = Math.floor(Math.random() * listKeys.length);
+          let randomObject = catArray[listKeys[randomIndex]];
+          this.randomCat = randomObject;
+        }
+      })
+      .catch((err) => console.log(err));
   },
 };
 </script>
