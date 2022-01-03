@@ -1,7 +1,7 @@
 <template>
   <v-app id="inspire">
     <v-container class="d-flex justify-center">
-      <div v-if="randomCat1">
+      <div v-if="randomCat1" class="pa-5">
         <v-img
           aspect-ratio="1"
           :src="randomCat1.url"
@@ -13,7 +13,7 @@
         >
         </v-img>
       </div>
-      <div v-if="randomCat2">
+      <div v-if="randomCat2" class="pa-5">
         <v-img
           aspect-ratio="1"
           :src="randomCat2.url"
@@ -30,7 +30,7 @@
 </template>
 <script>
 export default {
-  name: "CatCircle",
+  name: "Cat-circle",
   data() {
     return {
       randomCat1: null,

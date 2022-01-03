@@ -6,21 +6,21 @@
     >
       <h1 class="text-center">CATMASH</h1>
       <p class="subtitle-1">Voter pour le plus mignon !</p>
-      <MainMash />
+      <Cat-circle />
       <Rankings />
     </v-container>
   </v-app>
 </template>
 
 <script>
-import MainMash from "./components/MainMash";
 import Rankings from "./components/Rankings";
+import CatCircle from "./components/Cat-circle.vue";
 
 export default {
   name: "App",
 
   components: {
-    MainMash,
+    CatCircle,
     Rankings,
   },
 
