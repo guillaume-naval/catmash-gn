@@ -9,6 +9,7 @@
           width="330"
           alt="image cat"
           class="rounded-circle pa-2"
+          @click="addVote(randomCat1.id)"
         >
         </v-img>
       </div>
@@ -20,6 +21,7 @@
           width="330"
           alt="image cat"
           class="rounded-circle pa-2"
+          @click="addVote(randomCat2.id)"
         >
         </v-img>
       </div>
@@ -76,6 +78,37 @@ export default {
         }
       })
       .catch((err) => console.log(err));
+  },
+  methods: {
+    addVote(id) {
+      console.log(id);
+      this.$http
+        .get(
+          "https://catmash-bbf95-default-rtdb.europe-west1.firebasedatabase.app/cats/" +
+            id +
+            ".json"
+        )
+        .then((res) => {
+          console.log(res);
+          let newVote = res.data.vote + 1;
+          console.log(res.data.id);
+          console.log(res.data.url);
+          this.$http
+            .put(
+              "https://catmash-bbf95-default-rtdb.europe-west1.firebasedatabase.app/cats/" +
+                id +
+                ".json",
+              { id: res.data.id, url: res.data.url, vote: newVote }
+            )
+            .then((res) => {
+              console.log(res);
+            });
+        })
+        .catch((err) => console.log(err));
+      window.setTimeout(function () {
+        location.reload();
+      }, 1000);
+    },
   },
 };
 </script>
