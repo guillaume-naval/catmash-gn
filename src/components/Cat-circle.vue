@@ -136,6 +136,7 @@ export default {
 .randcat1,
 .randcat2 {
   padding: 3em;
+  cursor: pointer;
 }
 .vs {
   font-size: 4em;
