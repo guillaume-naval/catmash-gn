@@ -141,7 +141,7 @@ export default {
 .vs {
   font-size: 4em;
   padding: 0;
-  z-index: 4;
+  z-index: 0;
   position: relative;
   top: 140px;
 }
