@@ -75,9 +75,14 @@ export default {
           }
           console.log(catArray);
           let listKeys = Object.keys(catArray);
-          let randomIndex = Math.floor(Math.random() * listKeys.length);
-          this.randomCat1 = catArray[listKeys[randomIndex]];
-          this.randomCat2 = catArray[listKeys[randomIndex + 1]];
+          let randomIndex1 = Math.floor(Math.random() * listKeys.length);
+          let randomIndex2 = Math.floor(Math.random() * listKeys.length);
+          if (randomIndex1 == randomIndex2) {
+            let randomIndex3 = Math.floor(Math.random() * listKeys.length);
+            randomIndex2 = randomIndex3;
+          }
+          this.randomCat1 = catArray[listKeys[randomIndex1]];
+          this.randomCat2 = catArray[listKeys[randomIndex2]];
         }
       })
       .catch((err) => console.log(err));
